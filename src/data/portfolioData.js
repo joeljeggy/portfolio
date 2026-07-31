@@ -10,7 +10,7 @@ export const portfolioData = {
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",
     resumeUrl: "#resume",
-    showHostingBadge: true,
+    showHostingBadge: false,
     hostingBadgeText: "Cloudflare Pages"
   },
   stats: [
