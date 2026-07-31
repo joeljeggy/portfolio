@@ -3,10 +3,10 @@ import { ArrowRight, Download, Github, Linkedin, Twitter, Mail, Sparkles, Termin
 import { portfolioData } from '../data/portfolioData';
 
 const roles = [
-  "Full-Stack Architect",
-  "AI Systems Engineer",
-  "Cloud Native Developer",
-  "UI/UX Perfectionist"
+  "AI Systems Developer",
+  "Computer Science Engineer",
+  "Embedded & IoT Developer",
+  "Full-Stack Developer"
 ];
 
 export default function HeroSection({ onOpenTerminal }) {

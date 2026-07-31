@@ -49,9 +49,10 @@ export default function ContactSection() {
               </p>
             </div>
 
-            {/* Quick Copy Email Card */}
+            {/* Quick Copy Email & Phone Card */}
             <div className="glass-panel p-6 rounded-2xl space-y-4 border border-cyan-500/30">
-              <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">Direct Email Contact</span>
+              <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">Direct Contact Details</span>
+              
               <div className="flex items-center justify-between bg-[#0b0f19] p-3.5 rounded-xl border border-white/10">
                 <span className="text-sm font-mono text-slate-200 select-all">{portfolioData.personal.email}</span>
                 <button
@@ -61,6 +62,11 @@ export default function ContactSection() {
                   {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   <span>{copied ? 'Copied!' : 'Copy Email'}</span>
                 </button>
+              </div>
+
+              <div className="flex items-center justify-between bg-[#0b0f19] p-3.5 rounded-xl border border-white/10">
+                <span className="text-sm font-mono text-slate-200 select-all">{portfolioData.personal.phone}</span>
+                <span className="text-xs font-mono text-slate-400">Phone / WhatsApp</span>
               </div>
             </div>
 

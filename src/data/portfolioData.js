@@ -1,108 +1,115 @@
 export const portfolioData = {
   personal: {
-    name: "Joel J.",
-    title: "Senior Full-Stack Architect & AI Systems Engineer",
-    bio: "Passionate engineer building high-scalability web applications, intelligent AI integrations, and cloud infrastructure with exceptional UI/UX standards.",
-    status: "Available for high-impact roles & consulting",
-    location: "Global / Remote",
-    email: "joel@example.com",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    name: "Joel Jeggy",
+    title: "Computer Science Engineer & AI Systems Developer",
+    bio: "Computer Science undergraduate specializing in persistent LLM memory architectures, IoT hardware systems, computer vision, and high-performance web applications.",
+    status: "B.Tech CSE @ MACE Kothamangalam (2023–2027)",
+    location: "Aluva, Kerala, India",
+    email: "joeljeggy@gmail.com",
+    phone: "+91 8075528254",
+    github: "https://github.com/joeljeggy",
+    linkedin: "https://linkedin.com/in/joel-jeggy",
+    twitter: "https://github.com/joeljeggy",
     resumeUrl: "#resume",
     showHostingBadge: false,
     hostingBadgeText: "Cloudflare Pages"
   },
   stats: [
-    { label: "Years Experience", value: "6+" },
-    { label: "Projects Completed", value: "40+" },
-    { label: "GitHub Stars", value: "1.2k+" },
-    { label: "Production Uptime", value: "99.99%" }
+    { label: "B.Tech CGPA", value: "7.84" },
+    { label: "Graduation", value: "2027" },
+    { label: "Core Projects", value: "4+" },
+    { label: "NASA Mentor", value: "2025" }
   ],
   skillCategories: [
     {
-      name: "Frontend Architecture",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js / WebGL", "Vite", "Redux Toolkit"]
+      name: "Programming Languages",
+      skills: ["Python", "C++", "C", "JavaScript", "YAML"]
     },
     {
-      name: "Backend & Systems",
-      skills: ["Node.js", "Python", "Go", "GraphQL", "REST APIs", "PostgreSQL", "Redis", "Kafka"]
+      name: "Web & Database Stack",
+      skills: ["React", "Flask", "HTML5", "CSS3", "MongoDB", "REST APIs", "SSE Stream"]
     },
     {
-      name: "Cloud & AI Infrastructure",
-      skills: ["Cloudflare Workers", "Docker", "Kubernetes", "AWS", "LangChain / LLMs", "PyTorch", "CI/CD Pipelines"]
+      name: "AI, Hardware & IoT",
+      skills: ["Gemini API", "YOLO", "SentenceTransformers", "ESP32/8266", "Arduino", "Raspberry Pi", "Home Assistant", "Cloudflare Tunnels"]
     }
   ],
   projects: [
     {
-      id: "ai-dashboard",
-      title: "OmniAI Insights Platform",
-      subtitle: "Real-time AI telemetry & analytics engine with live vector query visualizer.",
+      id: "recall",
+      title: "Recall 2.0",
+      subtitle: "Persistent semantic memory layer for multi-agent LLM systems with knowledge & dialog banks.",
       category: "AI & ML",
-      image: "/images/ai_dashboard.jpg",
+      image: "/images/recall.jpg",
       featured: true,
-      description: "A enterprise-grade AI monitoring system providing real-time model telemetry, token usage tracking, and interactive vector search visualization.",
-      tech: ["React", "TypeScript", "Tailwind CSS", "Python", "FastAPI", "Pinecone", "Cloudflare Workers"],
-      metrics: ["Reduced latency by 45%", "Handles 10M+ daily events", "99.9% Uptime"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com"
+      description: "Built a persistent semantic memory layer using knowledge, dialog, and task banks with hybrid SentenceTransformer cosine similarity and BM25 retrieval. Features Ebbinghaus-based memory decay, intent filtering, and a Flask SSE dashboard.",
+      tech: ["Python", "Flask", "NumPy", "Sentence Transformers", "BM25", "REST API", "SSE"],
+      metrics: ["Outperformed hybrid RAG baselines", "Multi-agent dialog & knowledge banks", "Ebbinghaus memory decay engine"],
+      liveUrl: "https://github.com/joeljeggy/Recall-2.0",
+      githubUrl: "https://github.com/joeljeggy/Recall-2.0"
     },
     {
-      id: "cloud-devops",
-      title: "NexusCloud Infrastructure Monitor",
-      subtitle: "Multi-cloud Kubernetes cluster observability and incident management hub.",
-      category: "Cloud & DevOps",
+      id: "threat-detector",
+      title: "Threat Detector",
+      subtitle: "Real-time YOLO object detection with Gemini API footage analysis & Discord video alerts.",
+      category: "AI & ML",
+      image: "/images/threat_detector.jpg",
+      featured: true,
+      description: "Automated video surveillance pipeline using YOLO for real-time human detection, analyzed recorded event clips with Gemini API, and dispatched compressed video alerts to Discord via webhooks.",
+      tech: ["Python", "YOLO", "Gemini API", "ffmpeg", "Discord Webhooks", "OpenCV"],
+      metrics: ["Sub-second human detection", "AI-summarized Discord video alerts"],
+      liveUrl: "https://github.com/joeljeggy/threat-detector",
+      githubUrl: "https://github.com/joeljeggy/threat-detector"
+    },
+    {
+      id: "temporun",
+      title: "TempoRun",
+      subtitle: "ESP32 IoT treadmill workout synchronizer matching Spotify music BPM to running speeds.",
+      category: "Fullstack",
       image: "/images/cloud_devops.jpg",
       featured: true,
-      description: "High-performance dashboard for monitoring distributed cloud microservices with sub-second alert dispatch and interactive node maps.",
-      tech: ["Next.js", "Go", "Docker", "Prometheus", "Grafana", "Tailwind CSS"],
-      metrics: ["Instant alerting under 200ms", "Monitors 500+ microservices"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com"
+      description: "Hardware/software fitness system integrating an ESP32 microcontroller that synchronizes Spotify music to treadmill workouts, dynamically adjusting speed based on song BPM using Flask, Gemini API, and Spotify Web API.",
+      tech: ["C++", "Python", "Flask", "Gemini API", "Spotify API", "ESP32"],
+      metrics: ["Dynamic BPM treadmill adjustment", "Hardware + Spotify API bridge"],
+      liveUrl: "https://github.com/joeljeggy/TempoRun",
+      githubUrl: "https://github.com/joeljeggy/TempoRun"
     },
     {
-      id: "ecommerce-app",
-      title: "Aura Luxury Commerce Platform",
-      subtitle: "Next-gen headless e-commerce store with 3D product previews and instant checkout.",
-      category: "Fullstack",
+      id: "home-automation",
+      title: "Home Automation & Cloudflare Tunnel",
+      subtitle: "Centralized smart home controller running Home Assistant & encrypted remote access.",
+      category: "Cloud & DevOps",
       image: "/images/ecommerce_app.jpg",
       featured: true,
-      description: "Ultra-fast headless commerce platform featuring dynamic dark glassmorphism UI, real-time inventory sync, and localized checkout.",
-      tech: ["React", "Vite", "Stripe API", "GraphQL", "Tailwind CSS", "Node.js"],
-      metrics: ["Lighthouse score 99/100", "2.8x conversion increase"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com"
+      description: "Centralized home automation infrastructure deployed using Home Assistant and ESPHome with secure Cloudflare Reverse Tunneling for encrypted, zero-trust remote access.",
+      tech: ["Home Assistant", "ESPHome", "Cloudflare Reverse Tunnel", "YAML", "ESP32/ESP8266"],
+      metrics: ["Encrypted Cloudflare Tunnel", "Multi-sensor ESPHome setup"],
+      liveUrl: "https://github.com/joeljeggy",
+      githubUrl: "https://github.com/joeljeggy"
     }
   ],
   experience: [
     {
-      period: "2024 — Present",
-      role: "Lead Full-Stack & AI Architect",
-      company: "Apex Tech Labs",
-      description: "Architecting cloud-native web applications and deploying fine-tuned generative AI pipelines for enterprise clients.",
-      skills: ["React", "Python", "Cloudflare Pages", "LLM Integration"]
+      period: "2023 — 2027",
+      role: "B.Tech in Computer Science & Engineering",
+      company: "Mar Athanasius College of Engineering (Kothamangalam)",
+      description: "Current CGPA: 7.84/10 (up to 6th semester). Focusing on AI systems, embedded microcontrollers, and web development.",
+      skills: ["Data Structures", "Algorithms", "C++", "Python", "Web Engineering"]
     },
     {
-      period: "2022 — 2024",
-      role: "Senior Frontend Engineer",
-      company: "Vanguard Digital",
-      description: "Led frontend modernization across 5 core SaaS products, introducing dark mode design systems and performance optimizations.",
-      skills: ["Next.js", "TypeScript", "Tailwind CSS", "GraphQL"]
-    },
-    {
-      period: "2020 — 2022",
-      role: "Full-Stack Software Developer",
-      company: "CloudScale Systems",
-      description: "Built microservices APIs, continuous deployment pipelines, and real-time dashboard analytics.",
-      skills: ["Node.js", "Docker", "PostgreSQL", "Redis"]
+      period: "October 2025",
+      role: "Technical Mentor",
+      company: "NASA Space Apps Challenge",
+      description: "Mentored competing student teams for the NASA Space Apps Challenge hackathon hosted at MACE Kothamangalam.",
+      skills: ["Mentorship", "Problem Solving", "AI & Space Tech"]
     }
   ],
   terminalCommands: {
-    help: "Available commands: bio, skills, projects, contact, experience, clear",
-    bio: "Joel J. — Senior Architect building high-performance web apps & AI systems.",
-    skills: "React, Next.js, Node.js, Python, TypeScript, Tailwind CSS, Cloudflare Workers, Docker, LLMs",
-    projects: "1. OmniAI Insights Platform | 2. NexusCloud Infrastructure Monitor | 3. Aura Luxury Commerce Platform",
-    contact: "Email: joel@example.com | GitHub: github.com | LinkedIn: linkedin.com",
-    experience: "Lead Architect @ Apex Tech Labs (2024-Present) | Senior Engineer @ Vanguard (2022-2024)"
+    help: "Available commands: bio, skills, projects, contact, education, clear",
+    bio: "Joel Jeggy — CSE Undergrad @ MACE Kothamangalam (2023-2027). AI & Embedded Systems Developer.",
+    skills: "Python, C++, C, JavaScript, React, Flask, MongoDB, Gemini API, YOLO, ESP32, Home Assistant",
+    projects: "1. Recall 2.0 | 2. Threat Detector | 3. TempoRun | 4. Home Automation",
+    contact: "Email: joeljeggy@gmail.com | Phone: +91 8075528254 | GitHub: github.com/joeljeggy",
+    education: "B.Tech CSE @ Mar Athanasius College of Engineering, Kothamangalam (2023–2027) | CGPA: 7.84"
   }
 };
