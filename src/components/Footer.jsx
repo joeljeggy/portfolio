@@ -29,11 +29,13 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.</span>
         </div>
 
-        {/* Center: Cloudflare Pages Badge */}
-        <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 text-[11px] text-slate-300">
-          <Cloud className="w-4 h-4 text-cyan-400" />
-          <span>Hosted on <span className="text-white font-semibold">Cloudflare Pages</span> (Free Tier)</span>
-        </div>
+        {/* Center: Hosting Badge */}
+        {portfolioData.personal.showHostingBadge && (
+          <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 text-[11px] text-slate-300">
+            <Cloud className="w-4 h-4 text-cyan-400" />
+            <span>Hosted on <span className="text-white font-semibold">{portfolioData.personal.hostingBadgeText}</span></span>
+          </div>
+        )}
 
         {/* Right: Live Clock & Back to Top */}
         <div className="flex items-center gap-4">

@@ -9,7 +9,9 @@ export const portfolioData = {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",
-    resumeUrl: "#resume"
+    resumeUrl: "#resume",
+    showHostingBadge: true,
+    hostingBadgeText: "Cloudflare Pages"
   },
   stats: [
     { label: "Years Experience", value: "6+" },

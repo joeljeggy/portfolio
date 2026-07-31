@@ -81,7 +81,7 @@ export default function BentoGridSection() {
               </p>
             </div>
             <div className="pt-2 text-[11px] font-mono text-cyan-400 flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5" /> 100% Free Hosting Optimized
+              <Sparkles className="w-3.5 h-3.5" /> High-Performance Edge Architecture
             </div>
           </div>
 
