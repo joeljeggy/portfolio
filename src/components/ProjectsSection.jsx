@@ -53,7 +53,7 @@ export default function ProjectsSection({ onSelectProject }) {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="glass-panel rounded-xl overflow-hidden flex flex-col justify-between group border border-zinc-800 bg-zinc-950/40 text-left"
+              className="gsap-tilt glass-panel rounded-xl overflow-hidden flex flex-col justify-between group border border-zinc-800 bg-zinc-950/40 text-left"
             >
               {/* Image Container */}
               <div className="relative h-56 overflow-hidden bg-zinc-900">

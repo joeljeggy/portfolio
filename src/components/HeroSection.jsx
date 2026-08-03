@@ -43,7 +43,7 @@ export default function HeroSection({ onOpenTerminal, onNavigate }) {
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <button
               onClick={() => onNavigate('projects')}
-              className="px-6 py-3 rounded-lg bg-white hover:bg-zinc-200 text-black font-semibold text-sm flex items-center gap-2 shadow-md transition-all"
+              className="gsap-magnetic px-6 py-3 rounded-lg bg-white hover:bg-zinc-200 text-black font-semibold text-sm flex items-center gap-2 shadow-md transition-transform"
             >
               <span>View Projects</span>
               <ArrowRight className="w-4 h-4" />
@@ -53,7 +53,7 @@ export default function HeroSection({ onOpenTerminal, onNavigate }) {
               href={portfolioData.personal.github}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white font-medium text-sm flex items-center gap-2 border border-zinc-800 backdrop-blur-md transition-all"
+              className="gsap-magnetic px-6 py-3 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white font-medium text-sm flex items-center gap-2 border border-zinc-800 backdrop-blur-md transition-transform"
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
@@ -63,7 +63,7 @@ export default function HeroSection({ onOpenTerminal, onNavigate }) {
               href={portfolioData.personal.leetcode}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white font-medium text-sm flex items-center gap-2 border border-zinc-800 backdrop-blur-md transition-all"
+              className="gsap-magnetic px-6 py-3 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 hover:text-white font-medium text-sm flex items-center gap-2 border border-zinc-800 backdrop-blur-md transition-transform"
             >
               <Code2 className="w-4 h-4 text-zinc-400" />
               <span>LeetCode Profile</span>
@@ -71,7 +71,7 @@ export default function HeroSection({ onOpenTerminal, onNavigate }) {
 
             <button
               onClick={onOpenTerminal}
-              className="px-4 py-3 rounded-lg bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 text-xs font-mono flex items-center gap-2 transition-all"
+              className="gsap-magnetic px-4 py-3 rounded-lg bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 text-xs font-mono flex items-center gap-2 transition-transform"
               title="Command CLI"
             >
               <Terminal className="w-4 h-4" />

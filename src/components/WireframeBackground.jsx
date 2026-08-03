@@ -20,7 +20,7 @@ export default function WireframeBackground() {
 
     window.addEventListener('resize', handleResize);
 
-    // Scroll Physics State
+    // Direct, Lightweight Physics Easing
     let currentScroll = window.scrollY;
     let targetScroll = window.scrollY;
 
@@ -30,17 +30,37 @@ export default function WireframeBackground() {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Mouse Tracking
-    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    // Direct Mouse Tilt Easing
+    let rotX = 0.65;
+    let rotY = -0.3;
+    let targetRotX = 0.65;
+    let targetRotY = -0.3;
+
     const handleMouseMove = (e) => {
-      mouse.targetX = (e.clientY - height / 2) * 0.0006;
-      mouse.targetY = (e.clientX - width / 2) * 0.0006;
+      targetRotX = 0.65 + (e.clientY - height / 2) * 0.0006;
+      targetRotY = -0.3 + (e.clientX - width / 2) * 0.0006;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Pre-compute 3D Wireframe Sphere Geometries ONCE
-    const createSphereGeom = (radius, latCount = 6, lonCount = 8) => {
+    // Sun Pulsing Phase
+    let sunPulseAngle = 0;
+
+    // Ambient Cosmic Stardust Particles (Lightweight 30 particles)
+    const stardustCount = 30;
+    const stardust = [];
+    for (let i = 0; i < stardustCount; i++) {
+      stardust.push({
+        x: (Math.random() - 0.5) * width * 1.2,
+        y: (Math.random() - 0.5) * height * 1.2,
+        z: Math.random() * 300 - 150,
+        size: Math.random() * 1.2 + 0.5,
+        alpha: Math.random() * 0.35 + 0.1
+      });
+    }
+
+    // Pre-compute 3D Sphere Wireframe Vertices ONCE
+    const createSphereGeom = (radius, latCount = 5, lonCount = 7) => {
       const verts = [];
       const edges = [];
 
@@ -72,10 +92,10 @@ export default function WireframeBackground() {
       return { verts, edges };
     };
 
-    // Pre-computed Celestial Body Geometries
-    const sunGeom = createSphereGeom(24, 6, 8);
-    const jupiterGeom = createSphereGeom(15, 5, 7);
-    const saturnGeom = createSphereGeom(12, 5, 7);
+    // Pre-computed Celestial Bodies
+    const sunGeom = createSphereGeom(24, 5, 7);
+    const jupiterGeom = createSphereGeom(14, 4, 6);
+    const saturnGeom = createSphereGeom(12, 4, 6);
     const uranusGeom = createSphereGeom(10, 4, 6);
     const neptuneGeom = createSphereGeom(9, 4, 6);
     const earthGeom = createSphereGeom(9, 4, 6);
@@ -83,21 +103,18 @@ export default function WireframeBackground() {
     const marsGeom = createSphereGeom(7, 4, 6);
     const mercuryGeom = createSphereGeom(5, 4, 6);
 
-    // Ultra-calm, serene orbital speeds
     const planetList = [
-      { geom: mercuryGeom, dist: 50,  speed: 0.003,   angle: 0 },
-      { geom: venusGeom,   dist: 78,  speed: 0.002,   angle: 1.1 },
-      { geom: earthGeom,   dist: 112, speed: 0.0015,  angle: 2.3, hasMoon: true },
-      { geom: marsGeom,    dist: 148, speed: 0.001,   angle: 3.6 },
-      { geom: jupiterGeom, dist: 195, speed: 0.0006,  angle: 4.8 },
-      { geom: saturnGeom,  dist: 245, speed: 0.0004,  angle: 0.7, hasRings: true },
-      { geom: uranusGeom,  dist: 290, speed: 0.00025, angle: 2.1 },
-      { geom: neptuneGeom, dist: 330, speed: 0.00015, angle: 5.2 }
+      { geom: mercuryGeom, dist: 50,  speed: 0.025,  angle: 0 },
+      { geom: venusGeom,   dist: 78,  speed: 0.016,  angle: 1.1 },
+      { geom: earthGeom,   dist: 112, speed: 0.012,  angle: 2.3, hasMoon: true },
+      { geom: marsGeom,    dist: 148, speed: 0.008,  angle: 3.6 },
+      { geom: jupiterGeom, dist: 195, speed: 0.005,  angle: 4.8 },
+      { geom: saturnGeom,  dist: 245, speed: 0.003,  angle: 0.7, hasRings: true },
+      { geom: uranusGeom,  dist: 290, speed: 0.002,  angle: 2.1 },
+      { geom: neptuneGeom, dist: 330, speed: 0.0012, angle: 5.2 }
     ];
 
-    let rotX = 0.65;
-    let rotY = -0.3;
-
+    // Perspective 3D Projection Engine
     const project3D = (point, rx, ry, centerOffset) => {
       const cosY = Math.cos(ry);
       const sinY = Math.sin(ry);
@@ -146,103 +163,146 @@ export default function WireframeBackground() {
       });
     };
 
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
+    let stardustRot = 0;
 
-      // Smooth scroll interpolation
+    const animate = () => {
+      // Smooth Scroll Interpolation
       currentScroll += (targetScroll - currentScroll) * 0.08;
 
-      // Ultra-serene Tilt Angles
-      const rx = rotX + (mouse.targetX - rotX) * 0.03;
-      const ry = rotY + (mouse.targetY - rotY) * 0.03 + 0.0002;
-
-      // Synchronous Zoom & Fade-Out Physics
-      const maxScrollDist = Math.max(1, height * 0.6);
+      // Extended Fade Range (fades out later over 1.25x viewport height)
+      const maxScrollDist = Math.max(1, height * 1.25);
       const scrollRatio = Math.min(currentScroll / maxScrollDist, 1.0);
-
-      const zoomFactor = 1.0 + Math.pow(scrollRatio, 1.4) * 4.8;
       const fadeOpacity = Math.max(0, 1.0 - scrollRatio);
 
-      if (fadeOpacity > 0.008) {
-        // Positioned on the RIGHT SIDE
-        const rightColumnX = width > 768 ? width * 0.78 : width * 0.72;
-        const systemCenter = {
-          x: rightColumnX,
-          y: height * 0.45
+      // STRICT SCROLL CULLING: When scrolled past fade distance, clear canvas & stop processing to save 100% CPU!
+      if (fadeOpacity <= 0.01) {
+        ctx.clearRect(0, 0, width, height);
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      rotX += (targetRotX - rotX) * 0.04;
+      rotY += (targetRotY - rotY) * 0.04 + 0.001;
+      sunPulseAngle += 0.03;
+
+      const sunPulseScale = 1 + Math.sin(sunPulseAngle) * 0.05;
+
+      // CAPPED ZOOM SCALE (Max 1.8x)
+      const zoomFactor = 1.0 + scrollRatio * 0.8;
+
+      const rightColumnX = width > 768 ? width * 0.78 : width * 0.72;
+      const systemCenter = {
+        x: rightColumnX,
+        y: height * 0.45
+      };
+
+      // --- 1. Ambient Stardust ---
+      stardustRot += 0.0006;
+      const cosR = Math.cos(stardustRot);
+      const sinR = Math.sin(stardustRot);
+
+      stardust.forEach((star) => {
+        const rxStar = star.x * cosR - star.z * sinR;
+        const rzStar = star.x * sinR + star.z * cosR;
+
+        const pStar = project3D({ x: rxStar, y: star.y, z: rzStar }, rotX * 0.3, rotY * 0.3, systemCenter);
+        if (pStar.scale > 0) {
+          ctx.beginPath();
+          ctx.arc(pStar.x, pStar.y, star.size * pStar.scale, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha * fadeOpacity * 0.5})`;
+          ctx.fill();
+        }
+      });
+
+      // --- 2. Central Sun Radial Corona Halo ---
+      const sunCenterProj = project3D({ x: 0, y: 0, z: 0 }, rotX, rotY, systemCenter);
+      const sunRadius = 26 * zoomFactor * sunPulseScale * sunCenterProj.scale;
+
+      const haloGrad = ctx.createRadialGradient(
+        sunCenterProj.x, sunCenterProj.y, sunRadius * 0.2,
+        sunCenterProj.x, sunCenterProj.y, sunRadius * 2.0
+      );
+      haloGrad.addColorStop(0, `rgba(255, 255, 255, ${0.35 * fadeOpacity})`);
+      haloGrad.addColorStop(0.5, `rgba(255, 255, 255, ${0.08 * fadeOpacity})`);
+      haloGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+      ctx.beginPath();
+      ctx.arc(sunCenterProj.x, sunCenterProj.y, sunRadius * 2.0, 0, Math.PI * 2);
+      ctx.fillStyle = haloGrad;
+      ctx.fill();
+
+      // Draw Central Sun 3D Wireframe
+      drawWireframeGeomAt3DPos(sunGeom, { x: 0, y: 0, z: 0 }, rotX, rotY, systemCenter, zoomFactor * sunPulseScale, fadeOpacity);
+
+      // --- 3. Orbit Track Rings & Planets ---
+      planetList.forEach((p) => {
+        p.angle += p.speed;
+
+        const orbitR = p.dist * zoomFactor;
+
+        // Draw Distinct 3D Orbit Ring (Optimized 40 segments)
+        ctx.beginPath();
+        const numSegs = 40;
+        for (let i = 0; i <= numSegs; i++) {
+          const th = (i / numSegs) * Math.PI * 2;
+          const pt = project3D({ x: Math.cos(th) * orbitR, y: 0, z: Math.sin(th) * orbitR }, rotX, rotY, systemCenter);
+          if (i === 0) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.35 * fadeOpacity})`;
+        ctx.lineWidth = 1.1;
+        ctx.setLineDash([3, 3]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 3D Planet Position
+        const planet3DPos = {
+          x: Math.cos(p.angle) * orbitR,
+          y: 0,
+          z: Math.sin(p.angle) * orbitR
         };
 
-        // 1. Draw Central 3D Wireframe Sun at (0,0,0)
-        drawWireframeGeomAt3DPos(sunGeom, { x: 0, y: 0, z: 0 }, rx, ry, systemCenter, zoomFactor, fadeOpacity);
+        // Draw Planet Wireframe Sphere
+        drawWireframeGeomAt3DPos(p.geom, planet3DPos, rotX, rotY, systemCenter, zoomFactor, fadeOpacity * 0.85);
 
-        // 2. Draw Planetary Orbit Rings & Orbiting Planets
-        planetList.forEach((p) => {
-          p.angle += p.speed;
-
-          const orbitR = p.dist * zoomFactor;
-
-          // Draw Distinct, High-Contrast 3D Orbit Track Ring
+        // Draw Saturn's 3D Rings
+        if (p.hasRings) {
           ctx.beginPath();
-          const numSegs = 64;
-          for (let i = 0; i <= numSegs; i++) {
-            const th = (i / numSegs) * Math.PI * 2;
-            const pt = project3D({ x: Math.cos(th) * orbitR, y: 0, z: Math.sin(th) * orbitR }, rx, ry, systemCenter);
-            if (i === 0) ctx.moveTo(pt.x, pt.y);
-            else ctx.lineTo(pt.x, pt.y);
+          const ringR = 24 * zoomFactor;
+          for (let i = 0; i <= 20; i++) {
+            const th = (i / 20) * Math.PI * 2;
+            const rPt = project3D({
+              x: planet3DPos.x + Math.cos(th) * ringR,
+              y: planet3DPos.y + Math.sin(th) * ringR * 0.2,
+              z: planet3DPos.z + Math.sin(th) * ringR * 0.8
+            }, rotX, rotY, systemCenter);
+
+            if (i === 0) ctx.moveTo(rPt.x, rPt.y);
+            else ctx.lineTo(rPt.x, rPt.y);
           }
-          // Increased opacity from 0.14 to 0.35 for clear visibility
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.35 * fadeOpacity})`;
-          ctx.lineWidth = 1.2;
-          ctx.setLineDash([3, 3]);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.55 * fadeOpacity})`;
+          ctx.lineWidth = 1.1;
           ctx.stroke();
-          ctx.setLineDash([]);
+        }
 
-          // 3D Position of Planet EXACTLY ON THE ORBIT TRACK
-          const planet3DPos = {
-            x: Math.cos(p.angle) * orbitR,
-            y: 0,
-            z: Math.sin(p.angle) * orbitR
-          };
+        // Draw Earth's Moon Node
+        if (p.hasMoon) {
+          const moonDist = 16 * zoomFactor;
+          const moonAng = p.angle * 3.5;
+          const mPt = project3D({
+            x: planet3DPos.x + Math.cos(moonAng) * moonDist,
+            y: planet3DPos.y,
+            z: planet3DPos.z + Math.sin(moonAng) * moonDist
+          }, rotX, rotY, systemCenter);
 
-          // Draw Planet Wireframe Sphere at exact 3D position on orbit
-          drawWireframeGeomAt3DPos(p.geom, planet3DPos, rx, ry, systemCenter, zoomFactor, fadeOpacity * 0.85);
-
-          // Draw Saturn's 3D Rings
-          if (p.hasRings) {
-            ctx.beginPath();
-            const ringR = 24 * zoomFactor;
-            for (let i = 0; i <= 24; i++) {
-              const th = (i / 24) * Math.PI * 2;
-              const rPt = project3D({
-                x: planet3DPos.x + Math.cos(th) * ringR,
-                y: planet3DPos.y + Math.sin(th) * ringR * 0.2,
-                z: planet3DPos.z + Math.sin(th) * ringR * 0.8
-              }, rx, ry, systemCenter);
-
-              if (i === 0) ctx.moveTo(rPt.x, rPt.y);
-              else ctx.lineTo(rPt.x, rPt.y);
-            }
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.65 * fadeOpacity})`;
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-          }
-
-          // Draw Earth's Moon Node
-          if (p.hasMoon) {
-            const moonDist = 16 * zoomFactor;
-            const moonAng = p.angle * 3.5;
-            const mPt = project3D({
-              x: planet3DPos.x + Math.cos(moonAng) * moonDist,
-              y: planet3DPos.y,
-              z: planet3DPos.z + Math.sin(moonAng) * moonDist
-            }, rx, ry, systemCenter);
-
-            ctx.beginPath();
-            ctx.arc(mPt.x, mPt.y, 2.2 * mPt.scale, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * fadeOpacity})`;
-            ctx.fill();
-          }
-        });
-      }
+          ctx.beginPath();
+          ctx.arc(mPt.x, mPt.y, 2.2 * mPt.scale, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * fadeOpacity})`;
+          ctx.fill();
+        }
+      });
 
       animationFrameId = requestAnimationFrame(animate);
     };

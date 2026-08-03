@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ParticleBackground from './components/ParticleBackground';
 import WireframeBackground from './components/WireframeBackground';
+import GSAPEffects from './components/GSAPEffects';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import HighlightsFocusSection from './components/HighlightsFocusSection';
@@ -65,9 +66,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative text-zinc-100 bg-[#0a0a0a] selection:bg-white selection:text-black">
-      {/* Background Particle Canvas & 3D Ambient Wireframe */}
+      {/* Background Particle Canvas & 3D Ambient Wireframe & GSAP Physics */}
       <ParticleBackground />
       <WireframeBackground />
+      <GSAPEffects />
 
       {/* Navigation Header */}
       <Navbar
