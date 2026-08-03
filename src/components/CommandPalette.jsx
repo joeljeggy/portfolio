@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal, X, CornerDownLeft, Sparkles } from 'lucide-react';
+import { Terminal, X, CornerDownLeft } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function CommandPalette({ isOpen, onClose }) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
-    { type: 'system', text: 'Welcome to Joel J. Interactive CLI [v1.0.0]' },
+    { type: 'system', text: 'Joel Jeggy Terminal Interface [v1.0.0]' },
     { type: 'system', text: 'Type "help" to see available commands or click a shortcut below.' }
   ]);
 
@@ -49,38 +49,38 @@ export default function CommandPalette({ isOpen, onClose }) {
     handleCommand(input);
   };
 
-  const quickCmds = ['help', 'bio', 'skills', 'projects', 'contact'];
+  const quickCmds = ['help', 'bio', 'skills', 'projects', 'contact', 'education'];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-[#0d1322] border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl font-mono text-sm">
+      <div className="relative w-full max-w-2xl bg-[#0a0a0c] border border-zinc-800 rounded-xl overflow-hidden shadow-2xl font-mono text-sm">
         
         {/* Terminal Header */}
-        <div className="bg-[#121929] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+        <div className="bg-zinc-900 px-4 py-2.5 border-b border-zinc-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-            <span className="text-xs text-slate-400 font-semibold ml-2 flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-cyan-400" /> joel@portfolio:~
+            <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+            <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+            <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+            <span className="text-xs text-zinc-300 font-semibold ml-2 flex items-center gap-1.5">
+              <Terminal className="w-3.5 h-3.5 text-zinc-400" /> joel@portfolio:~
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded text-slate-400 hover:text-white hover:bg-white/10"
+            className="p-1 rounded text-zinc-400 hover:text-white hover:bg-zinc-800"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Quick Command Shortcuts */}
-        <div className="px-4 py-2 bg-[#101625] border-b border-white/5 flex items-center gap-2 overflow-x-auto text-xs">
-          <span className="text-slate-500 font-semibold uppercase text-[10px]">Shortcuts:</span>
+        <div className="px-4 py-2 bg-zinc-950 border-b border-zinc-800 flex items-center gap-2 overflow-x-auto text-xs">
+          <span className="text-zinc-500 font-semibold uppercase text-[10px]">Shortcuts:</span>
           {quickCmds.map((qc) => (
             <button
               key={qc}
               onClick={() => handleCommand(qc)}
-              className="px-2.5 py-1 rounded bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30 transition-all text-[11px]"
+              className="px-2.5 py-1 rounded bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all text-[11px]"
             >
               {qc}
             </button>
@@ -92,13 +92,13 @@ export default function CommandPalette({ isOpen, onClose }) {
           {history.map((item, idx) => (
             <div key={idx} className="space-y-0.5">
               {item.type === 'user' && (
-                <div className="text-cyan-400 font-semibold">{item.text}</div>
+                <div className="text-white font-bold">{item.text}</div>
               )}
               {item.type === 'system' && (
-                <div className="text-slate-400 italic">{item.text}</div>
+                <div className="text-zinc-500 italic">{item.text}</div>
               )}
               {item.type === 'output' && (
-                <div className="text-slate-200 pl-3 border-l-2 border-cyan-500/40 whitespace-pre-wrap leading-relaxed">
+                <div className="text-zinc-300 pl-3 border-l-2 border-zinc-700 whitespace-pre-wrap leading-relaxed">
                   {item.text}
                 </div>
               )}
@@ -108,19 +108,19 @@ export default function CommandPalette({ isOpen, onClose }) {
         </div>
 
         {/* Command Input Form */}
-        <form onSubmit={handleSubmit} className="p-3 bg-[#0a0e1a] border-t border-white/10 flex items-center gap-2">
-          <span className="text-cyan-400 font-bold ml-1">$</span>
+        <form onSubmit={handleSubmit} className="p-3 bg-zinc-950 border-t border-zinc-800 flex items-center gap-2">
+          <span className="text-white font-bold ml-1">$</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type 'help' or command..."
-            className="flex-1 bg-transparent text-slate-100 focus:outline-none text-xs font-mono placeholder:text-slate-600"
+            className="flex-1 bg-transparent text-white focus:outline-none text-xs font-mono placeholder:text-zinc-600"
           />
           <button
             type="submit"
-            className="p-1.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20"
+            className="p-1.5 rounded bg-zinc-900 text-white border border-zinc-800 hover:bg-zinc-800"
           >
             <CornerDownLeft className="w-3.5 h-3.5" />
           </button>

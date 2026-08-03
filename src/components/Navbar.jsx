@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Menu, X, Code2, Sparkles } from 'lucide-react';
+import { Terminal, Menu, X, Code2 } from 'lucide-react';
+import { portfolioData } from '../data/portfolioData';
 
-export default function Navbar({ onOpenTerminal }) {
+export default function Navbar({ activeView, onNavigate, onOpenTerminal }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -14,106 +15,97 @@ export default function Navbar({ onOpenTerminal }) {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', view: 'home' },
+    { name: 'Projects', view: 'projects' },
+    { name: 'Research', view: 'research' },
+    { name: 'About', view: 'about' },
+    { name: 'Experience', view: 'experience' },
+    { name: 'Skills', view: 'skills' },
+    { name: 'Contact', view: 'contact' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
         scrolled
-          ? 'py-3 bg-[#0b0f19]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl'
+          ? 'py-3 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-zinc-800 shadow-xl'
           : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-violet-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all duration-300">
-            <div className="w-full h-full bg-[#0b0f19] rounded-[11px] flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
+        
+        {/* Brand */}
+        <button onClick={() => onNavigate('home')} className="flex items-center gap-2.5 text-left group">
+          <div className="w-8 h-8 rounded-lg bg-white/5 border border-zinc-800 flex items-center justify-center text-white group-hover:border-zinc-600 transition-all">
+            <Code2 className="w-4 h-4 text-white" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-              Joel J. <Sparkles className="w-3.5 h-3.5 text-cyan-400 inline" />
-            </span>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-cyan-400/80">Full-Stack Architect</span>
-          </div>
-        </a>
+          <span className="text-sm font-bold text-white tracking-tight">
+            {portfolioData.personal.name}
+          </span>
+        </button>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-surface/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-inner">
+        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-zinc-800">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-cyan-400 rounded-full hover:bg-white/5 transition-all duration-200"
+            <button
+              key={link.view}
+              onClick={() => onNavigate(link.view)}
+              className={`px-3 py-1 text-xs font-medium rounded-full transition-all duration-150 ${
+                activeView === link.view
+                  ? 'bg-white text-black font-semibold shadow-sm'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Controls */}
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={onOpenTerminal}
-            className="flex items-center gap-2 text-xs font-mono text-slate-300 bg-white/5 hover:bg-cyan-500/10 hover:text-cyan-400 px-3.5 py-2 rounded-lg border border-white/10 hover:border-cyan-500/30 transition-all duration-200 group"
-            title="Open Command Terminal"
+            className="flex items-center gap-1.5 text-xs font-mono text-zinc-300 hover:text-white bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all"
+            title="Command Terminal"
           >
-            <Terminal className="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform duration-200" />
+            <Terminal className="w-3.5 h-3.5 text-zinc-400" />
             <span>Cmd + K</span>
           </button>
-
-          <a
-            href="#contact"
-            className="text-xs font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:opacity-95 transition-all duration-200"
+          <button
+            onClick={() => onNavigate('contact')}
+            className="text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-white hover:bg-zinc-200 text-black shadow-sm transition-all"
           >
-            Hire Me
-          </a>
+            Contact
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="flex items-center gap-2 md:hidden">
           <button
-            onClick={onOpenTerminal}
-            className="p-2 text-cyan-400 bg-white/5 rounded-lg border border-white/10"
-            title="Terminal"
-          >
-            <Terminal className="w-5 h-5" />
-          </button>
-          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-300 hover:text-white bg-white/5 rounded-lg border border-white/10"
+            className="p-2 text-zinc-400 hover:text-white bg-zinc-900 rounded-lg border border-zinc-800"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
+
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-panel border-b border-white/10 px-4 pt-3 pb-6 mt-3 space-y-3">
+        <div className="md:hidden glass-panel border-b border-zinc-800 px-4 pt-3 pb-6 mt-3 space-y-2 text-left bg-[#0a0a0a]">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-cyan-400 hover:bg-white/5 rounded-md"
+            <button
+              key={link.view}
+              onClick={() => {
+                onNavigate(link.view);
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-900 rounded-md"
             >
               {link.name}
-            </a>
+            </button>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-center text-sm font-semibold px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-md"
-          >
-            Hire Me
-          </a>
         </div>
       )}
     </header>

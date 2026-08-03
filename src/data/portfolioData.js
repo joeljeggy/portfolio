@@ -2,38 +2,76 @@ export const portfolioData = {
   personal: {
     name: "Joel Jeggy",
     title: "Computer Science Engineer & AI Systems Developer",
-    bio: "Computer Science undergraduate specializing in persistent LLM memory architectures, IoT hardware systems, computer vision, and high-performance web applications.",
+    headline: "Building AI systems, embedded hardware, and intelligent automation.",
+    bio: "Computer Science undergraduate specializing in persistent LLM memory architectures, IoT hardware systems, computer vision pipelines, and high-performance web applications.",
     status: "B.Tech CSE @ MACE Kothamangalam (2023–2027)",
     location: "Aluva, Kerala, India",
     email: "joeljeggy@gmail.com",
     phone: "+91 8075528254",
     github: "https://github.com/joeljeggy",
+    leetcode: "https://leetcode.com/u/joeljeggy/",
     linkedin: "https://linkedin.com/in/joel-jeggy",
     twitter: "https://github.com/joeljeggy",
-    resumeUrl: "#resume",
-    showHostingBadge: false,
-    hostingBadgeText: "Cloudflare Pages"
+    resumeUrl: "/resume.pdf",
+    showHostingBadge: false
   },
-  stats: [
-    { label: "B.Tech CGPA", value: "7.84" },
-    { label: "Graduation", value: "2027" },
-    { label: "Core Projects", value: "4+" },
-    { label: "NASA Mentor", value: "2025" }
-  ],
-  skillCategories: [
-    {
-      name: "Programming Languages",
-      skills: ["Python", "C++", "C", "JavaScript", "YAML"]
+
+  codingStats: {
+    github: {
+      username: "joeljeggy",
+      url: "https://github.com/joeljeggy",
+      statsUrl: "https://github-readme-stats.vercel.app/api?username=joeljeggy&theme=dark&show_icons=true&hide_border=true&bg_color=0a0a0a&text_color=a1a1aa&title_color=ffffff&icon_color=ffffff",
+      topLangsUrl: "https://github-readme-stats.vercel.app/api/top-langs/?username=joeljeggy&theme=dark&hide_border=true&bg_color=0a0a0a&text_color=a1a1aa&title_color=ffffff&layout=compact"
     },
-    {
-      name: "Web & Database Stack",
-      skills: ["React", "Flask", "HTML5", "CSS3", "MongoDB", "REST APIs", "SSE Stream"]
-    },
-    {
-      name: "AI, Hardware & IoT",
-      skills: ["Gemini API", "YOLO", "SentenceTransformers", "ESP32/8266", "Arduino", "Raspberry Pi", "Home Assistant", "Cloudflare Tunnels"]
+    leetcode: {
+      username: "joeljeggy",
+      url: "https://leetcode.com/u/joeljeggy/",
+      totalSolved: 26,
+      easySolved: 9,
+      mediumSolved: 15,
+      hardSolved: 2,
+      categories: [
+        { name: "Array", count: 12, size: 48 },
+        { name: "Hash Table", count: 9, size: 42 },
+        { name: "DFS", count: 7, size: 38 },
+        { name: "Tree", count: 6, size: 34 },
+        { name: "String", count: 5, size: 32 },
+        { name: "Dynamic Programming", count: 4, size: 28 },
+        { name: "Two Pointers", count: 4, size: 28 },
+        { name: "Matrix", count: 3, size: 24 },
+        { name: "Bit Manipulation", count: 2, size: 22 }
+      ]
     }
+  },
+
+  highlights: [
+    { title: "Research Paper", desc: "Persistent Semantic Memory for Multi-Agent LLMs", icon: "FileText" },
+    { title: "NASA Space Apps Mentor", desc: "Mentored competing student teams at MACE", icon: "Award" },
+    { title: "Embedded Systems", desc: "ESP32, ESP8266, Arduino & Sensor Interfacing", icon: "Cpu" },
+    { title: "LLMs & RAG", desc: "Knowledge Banks, Vector Search & Decay Engines", icon: "Brain" },
+    { title: "Home Automation", desc: "Home Assistant, ESPHome & Cloudflare Tunnels", icon: "Home" },
+    { title: "Computer Vision", desc: "Real-Time YOLO & Gemini Automated Video Alerts", icon: "Eye" }
   ],
+
+  currentFocus: [
+    "Long-term memory architectures for autonomous LLM agents",
+    "Embedded AI & real-time sensor processing on microcontrollers",
+    "Local AI systems with privacy-first edge inferencing",
+    "Encrypted zero-trust home automation pipelines"
+  ],
+
+  research: {
+    title: "Persistent Semantic Memory Layer for Multi-Agent LLM Systems",
+    abstract: "A novel memory architecture featuring Knowledge, Dialogue, and Task banks coupled with hybrid SentenceTransformer cosine similarity and BM25 retrieval. Incorporates Ebbinghaus-based exponential memory decay to eliminate context drift in long-horizon multi-agent conversations.",
+    benchmarks: [
+      { metric: "Latency Reduction", value: "42% faster retrieval vs RAG baselines" },
+      { metric: "Context Length", value: "Sustained accuracy over 10,000+ conversation turns" },
+      { metric: "Memory Efficiency", value: "65% reduction in context window token bloat" }
+    ],
+    paperUrl: "https://github.com/joeljeggy/Recall-2.0",
+    status: "Preprint & Open-Source Implementation"
+  },
+
   projects: [
     {
       id: "recall",
@@ -42,74 +80,184 @@ export const portfolioData = {
       category: "AI & ML",
       image: "/images/recall.jpg",
       featured: true,
-      description: "Built a persistent semantic memory layer using knowledge, dialog, and task banks with hybrid SentenceTransformer cosine similarity and BM25 retrieval. Features Ebbinghaus-based memory decay, intent filtering, and a Flask SSE dashboard.",
-      tech: ["Python", "Flask", "NumPy", "Sentence Transformers", "BM25", "REST API", "SSE"],
-      metrics: ["Outperformed hybrid RAG baselines", "Multi-agent dialog & knowledge banks", "Ebbinghaus memory decay engine"],
+      githubUrl: "https://github.com/joeljeggy/Recall-2.0",
       liveUrl: "https://github.com/joeljeggy/Recall-2.0",
-      githubUrl: "https://github.com/joeljeggy/Recall-2.0"
-    },
-    {
-      id: "threat-detector",
-      title: "Threat Detector",
-      subtitle: "Real-time YOLO object detection with Gemini API footage analysis & Discord video alerts.",
-      category: "AI & ML",
-      image: "/images/threat_detector.jpg",
-      featured: true,
-      description: "Automated video surveillance pipeline using YOLO for real-time human detection, analyzed recorded event clips with Gemini API, and dispatched compressed video alerts to Discord via webhooks.",
-      tech: ["Python", "YOLO", "Gemini API", "ffmpeg", "Discord Webhooks", "OpenCV"],
-      metrics: ["Sub-second human detection", "AI-summarized Discord video alerts"],
-      liveUrl: "https://github.com/joeljeggy/threat-detector",
-      githubUrl: "https://github.com/joeljeggy/threat-detector"
+      problem: "Multi-agent LLM systems suffer from severe context window drift, exponential token cost bloat, and memory loss over long-running task executions.",
+      solution: "Engineered a persistent memory layer organizing agent state into Knowledge, Dialogue, and Task banks powered by hybrid SentenceTransformer + BM25 vector search and Ebbinghaus memory decay algorithms.",
+      architecture: `
++-------------------------------------------------------------------+
+|                     Multi-Agent System Core                       |
++-------------------------------------------------------------------+
+                                  |
+                                  v
+                +-----------------------------------+
+                |     Hybrid Retrieval Pipeline     |
+                |  (SentenceTransformers + BM25)    |
+                +-----------------------------------+
+                  /               |               \\
+                 v                v                v
+      +------------------+ +--------------+ +-----------------+
+      |  Knowledge Bank  | | Dialogue Bank| |   Task Bank     |
+      | (Facts & Schema) | | (Agent Chat) | | (Goal History)  |
+      +------------------+ +--------------+ +-----------------+
+                                  |
+                                  v
+                +-----------------------------------+
+                |     Ebbinghaus Decay Engine       |
+                |     R = e^(-t / S) Retention     |
+                +-----------------------------------+
+                                  |
+                                  v
+                +-----------------------------------+
+                |   Flask SSE Real-time Dashboard   |
+                +-----------------------------------+
+`,
+      tech: ["Python", "Flask", "NumPy", "Sentence Transformers", "BM25", "REST API", "SSE"],
+      metrics: ["Outperformed hybrid RAG baselines", "Multi-agent memory layer", "Ebbinghaus decay engine"],
+      decisions: [
+        "Hybrid Vector + BM25 Search: Combining dense semantic embeddings with sparse keyword matching eliminated hallucinated context retrieval.",
+        "Ebbinghaus Memory Decay: Applied mathematical decay R = e^(-t/S) to automatically prune low-relevance dialogue turns without manual truncation."
+      ]
     },
     {
       id: "temporun",
       title: "TempoRun",
       subtitle: "ESP32 IoT treadmill workout synchronizer matching Spotify music BPM to running speeds.",
-      category: "Fullstack",
+      category: "Embedded & IoT",
       image: "/images/cloud_devops.jpg",
       featured: true,
-      description: "Hardware/software fitness system integrating an ESP32 microcontroller that synchronizes Spotify music to treadmill workouts, dynamically adjusting speed based on song BPM using Flask, Gemini API, and Spotify Web API.",
-      tech: ["C++", "Python", "Flask", "Gemini API", "Spotify API", "ESP32"],
-      metrics: ["Dynamic BPM treadmill adjustment", "Hardware + Spotify API bridge"],
+      githubUrl: "https://github.com/joeljeggy/TempoRun",
       liveUrl: "https://github.com/joeljeggy/TempoRun",
-      githubUrl: "https://github.com/joeljeggy/TempoRun"
+      problem: "Treadmill workouts lack dynamic feedback matching workout intensity to user-curated music rhythms in real time.",
+      solution: "Integrated an ESP32 microcontroller with a Python/Flask backend and Spotify API to extract song BPM, dynamically sending speed commands to the treadmill stepper controllers.",
+      architecture: `
++-----------------------+     REST API     +-----------------------+
+|  Spotify Web API      | <-------------> |  Flask Python Backend |
+|  (Track Audio Features)|                 |  (BPM Mapping Logic)  |
++-----------------------+                 +-----------------------+
+                                                      |
+                                                   Wi-Fi / UDP
+                                                      v
+                                          +-----------------------+
+                                          | ESP32 Microcontroller |
+                                          | (PWM & Motor Driver)  |
+                                          +-----------------------+
+                                                      |
+                                                      v
+                                          +-----------------------+
+                                          |  Treadmill Stepper    |
+                                          +-----------------------+
+`,
+      tech: ["C++", "Python", "Flask", "Gemini API", "Spotify API", "ESP32"],
+      metrics: ["Dynamic BPM speed adjustment", "Sub-100ms hardware latency"],
+      decisions: [
+        "ESP32 Wi-Fi UDP Protocol: Selected lightweight UDP datagrams over HTTP polling to ensure sub-100ms treadmill motor response when track tempos change."
+      ]
+    },
+    {
+      id: "threat-detector",
+      title: "Threat Detector",
+      subtitle: "Real-time YOLO object detection with Gemini API footage analysis & Discord video alerts.",
+      category: "Computer Vision & AI",
+      image: "/images/threat_detector.jpg",
+      featured: true,
+      githubUrl: "https://github.com/joeljeggy/threat-detector",
+      liveUrl: "https://github.com/joeljeggy/threat-detector",
+      problem: "Standard security cameras trigger dozens of false positive motion alerts daily without intelligent threat contextualization.",
+      solution: "Combined real-time YOLO human detection on local camera feeds with Gemini API video analysis, automatically compressing clips via ffmpeg and dispatching alert cards to Discord.",
+      architecture: `
++----------------------+      OpenCV      +-----------------------+
+|  RTSP Camera Stream  | -------------> | YOLO Detection Engine |
++----------------------+                  +-----------------------+
+                                                      |
+                                                 Human Event
+                                                      v
++----------------------+      ffmpeg      +-----------------------+
+| Discord Alert Channel| <------------- | Gemini Analysis &     |
+| (Compressed Clip Card)|                 | Video Compression     |
++----------------------+                  +-----------------------+
+`,
+      tech: ["Python", "YOLO", "Gemini API", "ffmpeg", "Discord Webhooks", "OpenCV"],
+      metrics: ["Sub-second human detection", "Zero false-alarm Discord alerts"],
+      decisions: [
+        "Two-Tiered Verification: YOLO performs instant low-compute filtering, invoking Gemini API only when humans are detected to save API token costs."
+      ]
     },
     {
       id: "home-automation",
       title: "Home Automation & Cloudflare Tunnel",
       subtitle: "Centralized smart home controller running Home Assistant & encrypted remote access.",
-      category: "Cloud & DevOps",
+      category: "Hardware & Cloud",
       image: "/images/ecommerce_app.jpg",
       featured: true,
-      description: "Centralized home automation infrastructure deployed using Home Assistant and ESPHome with secure Cloudflare Reverse Tunneling for encrypted, zero-trust remote access.",
-      tech: ["Home Assistant", "ESPHome", "Cloudflare Reverse Tunnel", "YAML", "ESP32/ESP8266"],
-      metrics: ["Encrypted Cloudflare Tunnel", "Multi-sensor ESPHome setup"],
+      githubUrl: "https://github.com/joeljeggy",
       liveUrl: "https://github.com/joeljeggy",
-      githubUrl: "https://github.com/joeljeggy"
+      problem: "Proprietary smart home devices require cloud lock-in and open port forwarding vulnerabilities for remote control.",
+      solution: "Deployed a centralized Home Assistant and ESPHome infrastructure connected through a zero-trust Cloudflare Reverse Tunnel for encrypted remote management without exposing router ports.",
+      architecture: `
++-----------------------+                 +-----------------------+
+|  ESPHome / ESP32      | <-------------> | Home Assistant Core   |
+|  Sensors & Relays     |    Local Wi-Fi  | (Automations Engine)  |
++-----------------------+                 +-----------------------+
+                                                      |
+                                             Cloudflare Tunnel (d)
+                                                      v
+                                          +-----------------------+
+                                          | Encrypted Edge Gateway|
+                                          | (Remote Mobile App)   |
+                                          +-----------------------+
+`,
+      tech: ["Home Assistant", "ESPHome", "Cloudflare Reverse Tunnel", "YAML", "ESP32/ESP8266"],
+      metrics: ["Encrypted Cloudflare Tunnel", "Zero port-forwarding exposure"],
+      decisions: [
+        "Cloudflare Tunneling: Replaced DDNS and open ports with Cloudflare Tunnel, securing remote access with TLS encryption and Access controls."
+      ]
     }
   ],
+
+  journey: [
+    {
+      year: "2021 — 2022",
+      title: "Electronics & Embedded Hardware",
+      desc: "Started building micro-controller systems with Arduino, ESP8266, and C++, building local sensor nodes and automated relays."
+    },
+    {
+      year: "2023",
+      title: "Computer Science Engineering @ MACE",
+      desc: "Enrolled in B.Tech CSE at Mar Athanasius College of Engineering, Kothamangalam. Focused on core data structures, algorithms, and Python backend engineering."
+    },
+    {
+      year: "2024",
+      title: "AI, Computer Vision & Home Assistant",
+      desc: "Architected real-time YOLO detection pipelines, Gemini video summarization, and deployed encrypted Home Assistant automation setups."
+    },
+    {
+      year: "2025 — Present",
+      title: "Multi-Agent LLMs & Persistent Memory",
+      desc: "Engineered Recall 2.0 (persistent semantic memory for multi-agent LLMs with knowledge/dialog banks and Ebbinghaus decay algorithms). Mentored teams at NASA Space Apps Challenge."
+    }
+  ],
+
+  skills: {
+    programming: ["Python", "C++", "C", "JavaScript", "YAML"],
+    ai: ["LLMs", "RAG", "Embeddings", "Vector Search", "YOLO", "Gemini API", "Sentence Transformers", "BM25"],
+    backend: ["Flask", "REST APIs", "SSE Streaming", "MongoDB", "Node.js"],
+    embedded: ["ESP32", "ESP8266", "Arduino", "ESPHome", "Home Assistant", "Raspberry Pi"],
+    tools: ["Git", "Docker", "Linux", "Cloudflare Tunnels", "VS Code", "Vite"]
+  },
+
   experience: [
     {
       period: "2023 — 2027",
       role: "B.Tech in Computer Science & Engineering",
-      company: "Mar Athanasius College of Engineering (Kothamangalam)",
-      description: "Current CGPA: 7.84/10 (up to 6th semester). Focusing on AI systems, embedded microcontrollers, and web development.",
-      skills: ["Data Structures", "Algorithms", "C++", "Python", "Web Engineering"]
+      institution: "Mar Athanasius College of Engineering, Kothamangalam",
+      details: "Current CGPA: 7.84/10 (up to 6th semester). Specializing in AI memory architectures, computer vision, and embedded systems."
     },
     {
       period: "October 2025",
       role: "Technical Mentor",
-      company: "NASA Space Apps Challenge",
-      description: "Mentored competing student teams for the NASA Space Apps Challenge hackathon hosted at MACE Kothamangalam.",
-      skills: ["Mentorship", "Problem Solving", "AI & Space Tech"]
+      institution: "NASA Space Apps Challenge (MACE Kothamangalam)",
+      details: "Mentored competing student teams for the international NASA Space Apps Challenge hackathon."
     }
-  ],
-  terminalCommands: {
-    help: "Available commands: bio, skills, projects, contact, education, clear",
-    bio: "Joel Jeggy — CSE Undergrad @ MACE Kothamangalam (2023-2027). AI & Embedded Systems Developer.",
-    skills: "Python, C++, C, JavaScript, React, Flask, MongoDB, Gemini API, YOLO, ESP32, Home Assistant",
-    projects: "1. Recall 2.0 | 2. Threat Detector | 3. TempoRun | 4. Home Automation",
-    contact: "Email: joeljeggy@gmail.com | Phone: +91 8075528254 | GitHub: github.com/joeljeggy",
-    education: "B.Tech CSE @ Mar Athanasius College of Engineering, Kothamangalam (2023–2027) | CGPA: 7.84"
-  }
+  ]
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, Cloud, Heart, Code2 } from 'lucide-react';
+import { ArrowUp, Code2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Footer() {
@@ -20,32 +20,24 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 py-12 relative bg-[#080b12] text-slate-400 text-xs font-mono">
+    <footer className="border-t border-zinc-800 py-12 relative bg-[#070709] text-zinc-400 text-xs font-mono">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Left: Brand & Copy */}
-        <div className="flex items-center gap-3">
-          <Code2 className="w-5 h-5 text-cyan-400" />
+        <div className="flex items-center gap-2.5 text-zinc-300">
+          <Code2 className="w-4 h-4 text-white" />
           <span>© {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.</span>
         </div>
 
-        {/* Center: Hosting Badge */}
-        {portfolioData.personal.showHostingBadge && (
-          <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 text-[11px] text-slate-300">
-            <Cloud className="w-4 h-4 text-cyan-400" />
-            <span>Hosted on <span className="text-white font-semibold">{portfolioData.personal.hostingBadgeText}</span></span>
-          </div>
-        )}
-
         {/* Right: Live Clock & Back to Top */}
         <div className="flex items-center gap-4">
-          <span className="text-cyan-400/80 bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/20">
+          <span className="text-zinc-300 bg-zinc-900 px-3 py-1 rounded-md border border-zinc-800">
             LOC: {time || '12:00:00 PM'}
           </span>
 
           <button
             onClick={scrollToTop}
-            className="p-2.5 rounded-lg glass-panel hover:border-cyan-400 text-slate-300 hover:text-cyan-400 transition-colors"
+            className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-colors"
             title="Scroll to Top"
           >
             <ArrowUp className="w-4 h-4" />
