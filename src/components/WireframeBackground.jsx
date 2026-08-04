@@ -190,7 +190,7 @@ export default function WireframeBackground() {
       const sunPulseScale = 1 + Math.sin(sunPulseAngle) * 0.05;
 
       // CAPPED ZOOM SCALE (Max 1.8x)
-      const zoomFactor = 1.0 + scrollRatio * 0.8;
+      const zoomFactor = 1.0 + scrollRatio * 2;
 
       const rightColumnX = width > 768 ? width * 0.78 : width * 0.72;
       const systemCenter = {
