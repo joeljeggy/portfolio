@@ -19,6 +19,16 @@ export default function CommandPalette({ isOpen, onClose }) {
   }, [isOpen]);
 
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (isOpen && e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
 
@@ -34,7 +44,7 @@ export default function CommandPalette({ isOpen, onClose }) {
       return;
     }
 
-    const output = portfolioData.terminalCommands[cmd] || `Command not found: "${cmd}". Type "help" for options.`;
+    const output = portfolioData.terminalCommands?.[cmd] || `Command not found: "${cmd}". Type "help" for options.`;
     
     setHistory(prev => [
       ...prev,
@@ -52,8 +62,14 @@ export default function CommandPalette({ isOpen, onClose }) {
   const quickCmds = ['help', 'bio', 'skills', 'projects', 'contact', 'education'];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-[#0a0a0c] border border-zinc-800 rounded-xl overflow-hidden shadow-2xl font-mono text-sm">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl bg-[#0a0a0c] border border-zinc-800 rounded-xl overflow-hidden shadow-2xl font-mono text-sm"
+      >
         
         {/* Terminal Header */}
         <div className="bg-zinc-900 px-4 py-2.5 border-b border-zinc-800 flex items-center justify-between">

@@ -103,6 +103,9 @@ export default function WireframeBackground() {
     const marsGeom = createSphereGeom(7, 4, 6);
     const mercuryGeom = createSphereGeom(5, 4, 6);
 
+    // Global Speed Control Variable: Change this single value to speed up or slow down ALL planets at once!
+    const GLOBAL_ORBIT_SPEED_MULTIPLIER = .5;
+
     const planetList = [
       { geom: mercuryGeom, dist: 50,  speed: 0.025,  angle: 0 },
       { geom: venusGeom,   dist: 78,  speed: 0.016,  angle: 1.1 },
@@ -238,7 +241,7 @@ export default function WireframeBackground() {
 
       // --- 3. Orbit Track Rings & Planets ---
       planetList.forEach((p) => {
-        p.angle += p.speed;
+        p.angle += p.speed * GLOBAL_ORBIT_SPEED_MULTIPLIER;
 
         const orbitR = p.dist * zoomFactor;
 

@@ -259,5 +259,14 @@ export const portfolioData = {
       institution: "NASA Space Apps Challenge (MACE Kothamangalam)",
       details: "Mentored competing student teams for the international NASA Space Apps Challenge hackathon."
     }
-  ]
+  ],
+
+  terminalCommands: {
+    help: `Available commands:\n  help        - Display list of commands\n  bio         - View short biography\n  skills      - List technical skills & tech stack\n  projects    - View featured engineering projects\n  contact     - View contact details & social links\n  education   - View degree & academic details\n  clear       - Clear terminal screen`,
+    bio: `Joel Jeggy\nComputer Science Engineer & AI Systems Developer\nB.Tech CSE @ MACE Kothamangalam (2023–2027)\nFocus: AI Persistent Memory, Computer Vision, Embedded IoT, High-Performance Web`,
+    skills: `Programming: Python, C++, C, JavaScript, YAML\nAI / ML: LLMs, RAG, Embeddings, Vector Search, YOLO, Gemini API\nBackend & Hardware: Flask, MongoDB, Node.js, ESP32, ESP8266, Home Assistant, Docker`,
+    projects: `Featured Projects:\n1. Recall 2.0 - Persistent Semantic Memory for Multi-Agent LLMs\n2. Real-Time Threat Detector - YOLOv8 Computer Vision Pipeline\n3. Cloudflare-Tunneled Home Assistant Automation Gateway`,
+    contact: `Email: joeljeggy@gmail.com\nGitHub: https://github.com/joeljeggy\nLinkedIn: https://linkedin.com/in/joel-jeggy\nLeetCode: https://leetcode.com/u/joeljeggy/`,
+    education: `B.Tech in Computer Science & Engineering (2023–2027)\nMar Athanasius College of Engineering, Kothamangalam\nCurrent CGPA: 7.84/10`
+  }
 };
