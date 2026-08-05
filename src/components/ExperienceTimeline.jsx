@@ -4,7 +4,7 @@ import { portfolioData } from '../data/portfolioData';
 
 export default function ExperienceTimeline() {
   return (
-    <section id="experience" className="py-20 relative text-left">
+    <section id="experience" className="py-16 relative text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Section Header */}
@@ -13,7 +13,7 @@ export default function ExperienceTimeline() {
             <Briefcase className="w-3.5 h-3.5 text-white" />
             <span>Practical Experience</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Experience & Hackathons
           </h2>
         </div>
