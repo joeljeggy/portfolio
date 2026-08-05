@@ -54,34 +54,19 @@ export const portfolioData = {
   ],
 
   currentFocus: [
-    "Long-term memory architectures for autonomous LLM agents",
-    "Embedded AI & real-time sensor processing on microcontrollers",
-    "Local AI systems with privacy-first edge inferencing",
-    "Encrypted zero-trust home automation pipelines"
+    "TempoRun Extension: Integrating real-time accelerometer step counting onto the ESP32 to automatically calibrate runner stride length."
   ],
-
-  research: {
-    title: "Persistent Semantic Memory Layer for Multi-Agent LLM Systems",
-    abstract: "A novel memory architecture featuring Knowledge, Dialogue, and Task banks coupled with hybrid SentenceTransformer cosine similarity and BM25 retrieval. Incorporates Ebbinghaus-based exponential memory decay to eliminate context drift in long-horizon multi-agent conversations.",
-    benchmarks: [
-      { metric: "Latency Reduction", value: "42% faster retrieval vs RAG baselines" },
-      { metric: "Context Length", value: "Sustained accuracy over 10,000+ conversation turns" },
-      { metric: "Memory Efficiency", value: "65% reduction in context window token bloat" }
-    ],
-    paperUrl: "https://github.com/joeljeggy/Recall-2.0",
-    status: "Preprint & Open-Source Implementation"
-  },
 
   projects: [
     {
       id: "recall",
-      title: "Recall 2.0",
+      title: "Recall",
       subtitle: "Persistent semantic memory layer for multi-agent LLM systems with knowledge & dialog banks.",
       category: "AI & ML",
-      image: "/images/recall.jpg",
+      image: "/images/recall.png",
       featured: true,
       githubUrl: "https://github.com/joeljeggy/Recall-2.0",
-      liveUrl: "https://github.com/joeljeggy/Recall-2.0",
+      liveUrl: "https://recall.joeljeggy.dpdns.org/",
       problem: "Multi-agent LLM systems suffer from severe context window drift, exponential token cost bloat, and memory loss over long-running task executions.",
       solution: "Engineered a persistent memory layer organizing agent state into Knowledge, Dialogue, and Task banks powered by hybrid SentenceTransformer + BM25 vector search and Ebbinghaus memory decay algorithms.",
       architecture: `
@@ -122,25 +107,24 @@ export const portfolioData = {
     {
       id: "temporun",
       title: "TempoRun",
-      subtitle: "ESP32 IoT treadmill workout synchronizer matching Spotify music BPM to running speeds.",
+      subtitle: "ESP32 IoT treadmill workout synchronizer with real-time step counting for automatic stride length calibration.",
       category: "Embedded & IoT",
-      image: "/images/cloud_devops.jpg",
+      image: "/images/tempo_run.png",
       featured: true,
       githubUrl: "https://github.com/joeljeggy/TempoRun",
-      liveUrl: "https://github.com/joeljeggy/TempoRun",
-      problem: "Treadmill workouts lack dynamic feedback matching workout intensity to user-curated music rhythms in real time.",
-      solution: "Integrated an ESP32 microcontroller with a Python/Flask backend and Spotify API to extract song BPM, dynamically sending speed commands to the treadmill stepper controllers.",
+      problem: "Treadmill workouts lack dynamic feedback matching workout intensity to runner pace and music rhythm without manual calibration.",
+      solution: "Integrated an ESP32 microcontroller with accelerometer step-counting to automatically calibrate runner stride length, dynamically synchronizing treadmill motor speeds with Spotify track BPM.",
       architecture: `
 +-----------------------+     REST API     +-----------------------+
 |  Spotify Web API      | <-------------> |  Flask Python Backend |
-|  (Track Audio Features)|                 |  (BPM Mapping Logic)  |
+|  (Track Audio Features)|                 |  (BPM & Stride Logic) |
 +-----------------------+                 +-----------------------+
                                                       |
                                                    Wi-Fi / UDP
                                                       v
                                           +-----------------------+
                                           | ESP32 Microcontroller |
-                                          | (PWM & Motor Driver)  |
+                                          | (Step Counter & PWM)  |
                                           +-----------------------+
                                                       |
                                                       v
@@ -148,9 +132,10 @@ export const portfolioData = {
                                           |  Treadmill Stepper    |
                                           +-----------------------+
 `,
-      tech: ["C++", "Python", "Flask", "Gemini API", "Spotify API", "ESP32"],
-      metrics: ["Dynamic BPM speed adjustment", "Sub-100ms hardware latency"],
+      tech: ["C++", "Python", "Flask", "ESP32", "MPU6050 Accelerometer", "Spotify API"],
+      metrics: ["Auto Stride Calibration", "Real-Time Step Counting", "Dynamic BPM Speed Matching"],
       decisions: [
+        "Automatic Stride Length Calibration: Currently extending TempoRun with accelerometer step-counting to dynamically calculate stride length without manual user input.",
         "ESP32 Wi-Fi UDP Protocol: Selected lightweight UDP datagrams over HTTP polling to ensure sub-100ms treadmill motor response when track tempos change."
       ]
     },
@@ -162,7 +147,6 @@ export const portfolioData = {
       image: "/images/threat_detector.jpg",
       featured: true,
       githubUrl: "https://github.com/joeljeggy/threat-detector",
-      liveUrl: "https://github.com/joeljeggy/threat-detector",
       problem: "Standard security cameras trigger dozens of false positive motion alerts daily without intelligent threat contextualization.",
       solution: "Combined real-time YOLO human detection on local camera feeds with Gemini API video analysis, automatically compressing clips via ffmpeg and dispatching alert cards to Discord.",
       architecture: `
@@ -185,13 +169,12 @@ export const portfolioData = {
     },
     {
       id: "home-automation",
-      title: "Home Automation & Cloudflare Tunnel",
+      title: "Home Automation",
       subtitle: "Centralized smart home controller running Home Assistant & encrypted remote access.",
       category: "Hardware & Cloud",
-      image: "/images/ecommerce_app.jpg",
+      image: "/images/home_automation.png",
       featured: true,
       githubUrl: "https://github.com/joeljeggy",
-      liveUrl: "https://github.com/joeljeggy",
       problem: "Proprietary smart home devices require cloud lock-in and open port forwarding vulnerabilities for remote control.",
       solution: "Deployed a centralized Home Assistant and ESPHome infrastructure connected through a zero-trust Cloudflare Reverse Tunnel for encrypted remote management without exposing router ports.",
       architecture: `
@@ -234,7 +217,7 @@ export const portfolioData = {
     {
       year: "2025 — Present",
       title: "Multi-Agent LLMs & Persistent Memory",
-      desc: "Engineered Recall 2.0 (persistent semantic memory for multi-agent LLMs with knowledge/dialog banks and Ebbinghaus decay algorithms). Mentored teams at NASA Space Apps Challenge."
+      desc: "Engineered Recall (persistent semantic memory for multi-agent LLMs with knowledge/dialog banks and Ebbinghaus decay algorithms). Mentored teams at NASA Space Apps Challenge."
     }
   ],
 
@@ -265,7 +248,7 @@ export const portfolioData = {
     help: `Available commands:\n  help        - Display list of commands\n  bio         - View short biography\n  skills      - List technical skills & tech stack\n  projects    - View featured engineering projects\n  contact     - View contact details & social links\n  education   - View degree & academic details\n  clear       - Clear terminal screen`,
     bio: `Joel Jeggy\nComputer Science Engineer & AI Systems Developer\nB.Tech CSE @ MACE Kothamangalam (2023–2027)\nFocus: AI Persistent Memory, Computer Vision, Embedded IoT, High-Performance Web`,
     skills: `Programming: Python, C++, C, JavaScript, YAML\nAI / ML: LLMs, RAG, Embeddings, Vector Search, YOLO, Gemini API\nBackend & Hardware: Flask, MongoDB, Node.js, ESP32, ESP8266, Home Assistant, Docker`,
-    projects: `Featured Projects:\n1. Recall 2.0 - Persistent Semantic Memory for Multi-Agent LLMs\n2. Real-Time Threat Detector - YOLOv8 Computer Vision Pipeline\n3. Cloudflare-Tunneled Home Assistant Automation Gateway`,
+    projects: `Featured Projects:\n1. Recall - Persistent Semantic Memory for Multi-Agent LLMs\n2. Real-Time Threat Detector - YOLOv8 Computer Vision Pipeline\n3. Cloudflare-Tunneled Home Assistant Automation Gateway`,
     contact: `Email: joeljeggy@gmail.com\nGitHub: https://github.com/joeljeggy\nLinkedIn: https://linkedin.com/in/joel-jeggy\nLeetCode: https://leetcode.com/u/joeljeggy/`,
     education: `B.Tech in Computer Science & Engineering (2023–2027)\nMar Athanasius College of Engineering, Kothamangalam\nCurrent CGPA: 7.84/10`
   }

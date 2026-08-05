@@ -77,7 +77,7 @@ export default function ContactSection() {
                 <span>Current Availability</span>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                {portfolioData.personal.status}. Open for AI engineering roles, embedded systems research, and web application builds.
+                {portfolioData.personal.status}. Open for AI engineering roles, embedded hardware projects, and web application builds.
               </p>
             </div>
 

@@ -28,7 +28,7 @@ export default function ProjectDetailView({ project, onBack }) {
 
       {/* Hero Image */}
       <div className="relative h-72 sm:h-96 rounded-xl overflow-hidden glass-panel border border-zinc-800 bg-zinc-950">
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale opacity-90" />
+        <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-90" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90" />
       </div>
 
@@ -72,7 +72,7 @@ export default function ProjectDetailView({ project, onBack }) {
       )}
 
       {/* Actions & Links */}
-      <div className="pt-6 border-t border-zinc-800 flex items-center gap-4">
+      <div className="pt-6 border-t border-zinc-800 flex flex-wrap items-center gap-4">
         <a
           href={project.githubUrl}
           target="_blank"
@@ -83,6 +83,18 @@ export default function ProjectDetailView({ project, onBack }) {
           <span>Source Repository</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
+
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-3 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-xs border border-zinc-800 flex items-center gap-2 transition-all"
+          >
+            <ExternalLink className="w-4 h-4 text-white" />
+            <span>Live Demo (recall.joeljeggy.dpdns.org)</span>
+          </a>
+        )}
       </div>
 
     </div>

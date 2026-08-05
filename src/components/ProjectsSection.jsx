@@ -23,11 +23,8 @@ export default function ProjectsSection({ onSelectProject }) {
               <span>Showcase</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Featured Projects & Architecture
+              Featured Projects
             </h2>
-            <p className="text-zinc-400 text-sm max-w-xl">
-              High-impact systems engineered for performance, edge processing, and multi-agent memory.
-            </p>
           </div>
 
           {/* Category Filter Tabs */}
@@ -53,14 +50,15 @@ export default function ProjectsSection({ onSelectProject }) {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="gsap-tilt glass-panel rounded-xl overflow-hidden flex flex-col justify-between group border border-zinc-800 bg-zinc-950/40 text-left"
+              onClick={() => onSelectProject(project)}
+              className="glass-panel rounded-xl overflow-hidden flex flex-col justify-between group border border-zinc-800 bg-zinc-950/40 text-left cursor-pointer transition-colors hover:border-zinc-700"
             >
               {/* Image Container */}
               <div className="relative h-56 overflow-hidden bg-zinc-900">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100"
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-90" />
                 
@@ -75,7 +73,7 @@ export default function ProjectsSection({ onSelectProject }) {
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold text-white group-hover:text-zinc-200 transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-white" />
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
                   </h3>
                   <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
                     {project.subtitle}
@@ -110,33 +108,34 @@ export default function ProjectsSection({ onSelectProject }) {
 
                 {/* Card Footer Actions */}
                 <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
-                  <button
-                    onClick={() => onSelectProject(project)}
-                    className="text-xs font-semibold text-white hover:text-zinc-300 flex items-center gap-1.5 group/btn"
-                  >
+                  <span className="text-xs font-semibold text-white flex items-center gap-1.5">
                     <span>Read Architecture Case Study</span>
-                    <Sparkles className="w-3.5 h-3.5 group-hover/btn:rotate-45 transition-transform" />
-                  </button>
+                    <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
+                  </span>
 
                   <div className="flex items-center gap-3 text-zinc-400">
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="hover:text-white transition-colors"
                       title="GitHub Repository"
                     >
                       <Github className="w-4 h-4" />
                     </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-white transition-colors"
-                      title="Live Link"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:text-white transition-colors"
+                        title="Live Demo"
+                      >
+                        <ExternalLink className="w-4 h-4 text-white" />
+                      </a>
+                    )}
                   </div>
                 </div>
 

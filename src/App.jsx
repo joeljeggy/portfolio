@@ -8,7 +8,6 @@ import HighlightsFocusSection from './components/HighlightsFocusSection';
 import CodingStatsSection from './components/CodingStatsSection';
 import ProjectsSection from './components/ProjectsSection';
 import ProjectDetailView from './components/ProjectDetailView';
-import ResearchView from './components/ResearchView';
 import AboutView from './components/AboutView';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import SkillsView from './components/SkillsView';
@@ -28,7 +27,7 @@ export default function App() {
       if (hash.startsWith('project/')) {
         const projId = hash.replace('project/', '');
         setActiveView('project-detail');
-      } else if (['home', 'projects', 'research', 'about', 'experience', 'skills', 'contact'].includes(hash)) {
+      } else if (['home', 'projects', 'about', 'experience', 'skills', 'contact'].includes(hash)) {
         setActiveView(hash);
       }
     };
@@ -68,7 +67,7 @@ export default function App() {
     <div className="min-h-screen relative text-zinc-100 bg-[#0a0a0a] selection:bg-white selection:text-black">
       {/* Background Particle Canvas & 3D Ambient Wireframe & GSAP Physics */}
       <ParticleBackground />
-      <WireframeBackground />
+      {activeView === 'home' && <WireframeBackground />}
       <GSAPEffects />
 
       {/* Navigation Header */}
@@ -86,9 +85,9 @@ export default function App() {
               onOpenTerminal={() => setTerminalOpen(true)}
               onNavigate={handleNavigate}
             />
+            <ProjectsSection onSelectProject={handleOpenProjectDetail} />
             <HighlightsFocusSection />
             <CodingStatsSection />
-            <ProjectsSection onSelectProject={handleOpenProjectDetail} />
           </>
         )}
 
@@ -103,7 +102,6 @@ export default function App() {
           />
         )}
 
-        {activeView === 'research' && <ResearchView />}
         {activeView === 'about' && <AboutView />}
         {activeView === 'experience' && <ExperienceTimeline />}
         {activeView === 'skills' && <SkillsView />}

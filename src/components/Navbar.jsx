@@ -17,7 +17,6 @@ export default function Navbar({ activeView, onNavigate, onOpenTerminal }) {
   const navLinks = [
     { name: 'Home', view: 'home' },
     { name: 'Projects', view: 'projects' },
-    { name: 'Research', view: 'research' },
     { name: 'About', view: 'about' },
     { name: 'Experience', view: 'experience' },
     { name: 'Skills', view: 'skills' },
