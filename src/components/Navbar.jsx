@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Menu, X, Code2 } from 'lucide-react';
+import { Terminal, Menu, X, CodeXml } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Navbar({ activeView, onNavigate, onOpenTerminal }) {
@@ -36,7 +36,7 @@ export default function Navbar({ activeView, onNavigate, onOpenTerminal }) {
         {/* Brand */}
         <button onClick={() => onNavigate('home')} className="flex items-center gap-2.5 text-left group">
           <div className="w-8 h-8 rounded-lg bg-white/5 border border-zinc-800 flex items-center justify-center text-white group-hover:border-zinc-600 transition-all">
-            <Code2 className="w-4 h-4 text-white" />
+            <CodeXml className="w-4 h-4 text-white" />
           </div>
           <span className="text-sm font-bold text-white tracking-tight">
             {portfolioData.personal.name}

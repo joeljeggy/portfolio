@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Brain, Database, Wrench, Code2 } from 'lucide-react';
+import { Cpu, Brain, Database, Wrench, Code2, CodeXml } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function SkillsView() {
@@ -21,7 +21,7 @@ export default function SkillsView() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
-              <Cpu className="w-3.5 h-3.5 text-white" />
+              <CodeXml className="w-3.5 h-3.5 text-white" />
               <span>Technical Capabilities</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">

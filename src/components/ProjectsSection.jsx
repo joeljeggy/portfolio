@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Layers, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, CodeXml, ArrowUpRight, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function ProjectsSection({ onSelectProject }) {
@@ -19,7 +19,7 @@ export default function ProjectsSection({ onSelectProject }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="space-y-2 text-left">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
-              <Layers className="w-3.5 h-3.5 text-white" />
+              <CodeXml className="w-3.5 h-3.5 text-white" />
               <span>Showcase</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
