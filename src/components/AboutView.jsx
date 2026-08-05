@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Compass, Brain, Cpu, Code2, Globe } from 'lucide-react';
+import { Compass, Brain, Cpu, Code2, Globe } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function AboutView() {
@@ -9,12 +9,8 @@ export default function AboutView() {
         
         {/* Header */}
         <div className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400 bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">
-            <User className="w-3.5 h-3.5 text-white" />
-            <span>Engineering Story</span>
-          </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            About Joel Jeggy
+            Who am I
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
             Computer Science Engineer passionate about building real-world AI systems, microcontroller hardware, and multi-agent LLM memory layers.

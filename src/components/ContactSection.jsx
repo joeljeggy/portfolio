@@ -70,17 +70,6 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Availability Box */}
-            <div className="glass-panel p-6 rounded-xl space-y-2 border border-zinc-800 bg-zinc-950/40">
-              <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                <ShieldCheck className="w-5 h-5 text-white" />
-                <span>Current Availability</span>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                {portfolioData.personal.status}. Open for AI engineering roles, embedded hardware projects, and web application builds.
-              </p>
-            </div>
-
           </div>
 
           {/* Right Column: Contact Form */}

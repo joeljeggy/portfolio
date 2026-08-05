@@ -1,9 +1,8 @@
 export const portfolioData = {
   personal: {
     name: "Joel Jeggy",
-    title: "Computer Science Engineer & AI Systems Developer",
-    headline: "Building AI systems, embedded hardware, and intelligent automation.",
-    bio: "Computer Science undergraduate specializing in persistent LLM memory architectures, IoT hardware systems, computer vision pipelines, and high-performance web applications.",
+    title: "Software Engineer • Full-Stack, AI & Hardware",
+    bio: "Passionate about building hybrid solutions for real-world problems. Focused on full-stack web applications, agentic AI systems, and hardware integration.",
     status: "B.Tech CSE @ MACE Kothamangalam (2023–2027)",
     location: "Aluva, Kerala, India",
     email: "joeljeggy@gmail.com",
@@ -174,7 +173,6 @@ export const portfolioData = {
       category: "Hardware & Cloud",
       image: "/images/home_automation.png",
       featured: true,
-      githubUrl: "https://github.com/joeljeggy",
       problem: "Proprietary smart home devices require cloud lock-in and open port forwarding vulnerabilities for remote control.",
       solution: "Deployed a centralized Home Assistant and ESPHome infrastructure connected through a zero-trust Cloudflare Reverse Tunnel for encrypted remote management without exposing router ports.",
       architecture: `
@@ -229,12 +227,21 @@ export const portfolioData = {
     tools: ["Git", "Docker", "Linux", "Cloudflare Tunnels", "VS Code", "Vite"]
   },
 
+  education: [
+    {
+      degree: "B.Tech in Computer Science & Engineering",
+      institution: "Mar Athanasius College of Engineering, Kothamangalam",
+      period: "2023 — 2027",
+      details: "Current CGPA: 7.84/10 (up to 6th semester)."
+    }
+  ],
+
   experience: [
     {
-      period: "2023 — 2027",
-      role: "B.Tech in Computer Science & Engineering",
-      institution: "Mar Athanasius College of Engineering, Kothamangalam",
-      details: "Current CGPA: 7.84/10 (up to 6th semester). Specializing in AI memory architectures, computer vision, and embedded systems."
+      period: "2026",
+      role: "Vajra Hackathon Participant",
+      institution: "ASME Spectrum 5.0",
+      details: "Competed in Vajra Hackathon (ASME Spectrum 5.0) and shortlisted for internship."
     },
     {
       period: "October 2025",

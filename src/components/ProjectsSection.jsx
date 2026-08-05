@@ -114,16 +114,18 @@ export default function ProjectsSection({ onSelectProject }) {
                   </span>
 
                   <div className="flex items-center gap-3 text-zinc-400">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="hover:text-white transition-colors"
-                      title="GitHub Repository"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:text-white transition-colors"
+                        title="GitHub Repository"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    )}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
