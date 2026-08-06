@@ -109,8 +109,7 @@ export default function ProjectsSection({ onSelectProject }) {
                 {/* Card Footer Actions */}
                 <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
                   <span className="text-xs font-semibold text-white flex items-center gap-1.5">
-                    <span>Read Architecture Case Study</span>
-                    <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
+                    
                   </span>
 
                   <div className="flex items-center gap-3 text-zinc-400">
