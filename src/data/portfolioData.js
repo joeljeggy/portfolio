@@ -173,6 +173,7 @@ export const portfolioData = {
       category: "Hardware & Cloud",
       image: "/images/home_automation.png",
       featured: true,
+      liveUrl: "https://ha-2005.joeljeggy.dpdns.org/",
       problem: "Proprietary smart home devices require cloud lock-in and open port forwarding vulnerabilities for remote control.",
       solution: "Deployed a centralized Home Assistant and ESPHome infrastructure connected through a zero-trust Cloudflare Reverse Tunnel for encrypted remote management without exposing router ports.",
       architecture: `
