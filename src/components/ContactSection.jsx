@@ -19,6 +19,11 @@ export default function ContactSection() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    
+    window.location.href = `mailto:${portfolioData.personal.email}?subject=${subject}&body=${body}`;
+    
     setSubmitted(true);
     confetti({ particleCount: 80, spread: 80, origin: { y: 0.6 } });
     setTimeout(() => {

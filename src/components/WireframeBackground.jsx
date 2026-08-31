@@ -198,7 +198,7 @@ export default function WireframeBackground() {
       const rightColumnX = width > 768 ? width * 0.78 : width * 0.72;
       const systemCenter = {
         x: rightColumnX,
-        y: height * 0.45
+        y: height / 2
       };
 
       // --- 1. Ambient Stardust ---

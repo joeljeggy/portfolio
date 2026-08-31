@@ -4,8 +4,8 @@ import { portfolioData } from '../data/portfolioData';
 
 export default function HeroSection({ onOpenTerminal, onNavigate }) {
   return (
-    <section className="relative pt-44 pb-16 md:pt-56 md:pb-24 text-left">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-screen flex flex-col justify-center text-left">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
         {/* Full Width Hero Column */}
         <div className="max-w-2xl space-y-5 relative z-10">
